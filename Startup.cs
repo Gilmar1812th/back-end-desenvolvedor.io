@@ -9,7 +9,7 @@ namespace MinhaPrimeiraAPI
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigurationServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)        
         {
             services.AddControllers();            
             services.AddEndpointsApiExplorer();
