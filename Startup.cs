@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using MinhaPrimeiraAPI.Model;
+
 namespace MinhaPrimeiraAPI
 {
     public class Startup : IStartup
@@ -10,10 +13,13 @@ namespace MinhaPrimeiraAPI
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)        
-        {
+         {                
             services.AddControllers();            
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+
+            services.AddDbContext<ApiDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         public void Configure(WebApplication app, IWebHostEnvironment environment)
